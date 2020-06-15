@@ -28,3 +28,8 @@ Route::get('/contact', 'front\contactController@index');
 
 //review
 Route::get('/review', 'front\reviewController@index');
+
+
+
+//login
+Route::get('/login', 'back\authController@index');
