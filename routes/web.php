@@ -42,3 +42,4 @@ Route::get('/category', 'back\categoryController@index')->name('back-category');
 
 //product
 Route::get('/product', 'back\productController@index')->name('back-product');
+Route::get('/product/create', 'back\productController@create')->name('back-product-create');

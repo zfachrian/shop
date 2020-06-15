@@ -13,5 +13,14 @@ class productController extends Controller
         return view('back.product');
     }
 
-    
+    public function create()
+    {
+        return view('back.productCreate');
+    }
+
+    public function edit()
+    {
+        return view('back.productEdit');
+    }
+
 }
