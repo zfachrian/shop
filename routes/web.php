@@ -32,4 +32,13 @@ Route::get('/review', 'front\reviewController@index');
 
 
 //login
-Route::get('/login', 'back\authController@index');
+Route::get('/login', 'back\authController@index')->name('login');
+
+//dashboard
+Route::get('/dashboard', 'back\dashboardController@index')->name('dashboard');
+
+//category
+Route::get('/category', 'back\categoryController@index')->name('back-category');
+
+//product
+Route::get('/product', 'back\productController@index')->name('back-product');
