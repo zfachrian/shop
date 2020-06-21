@@ -26,15 +26,19 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" method="post" action="">
+        <form role="form" method="post" action="{{route('back.category.store')}}">
+        @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label for="category_name">Nama Kategori</label>
-                    <input type="text" class="form-control" id="category_name" name="category_name">
+                    <label for="nama_kategori">Nama Kategori</label>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="nama_kategori" name="nama_kategori">
+                    @error('nama_kategori')
+                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
-                    <label for="category_detail">Detail</label>
-                    <input type="text" class="form-control" id="category_detail" name="category_detail">
+                    <label for="detail_kategori">Detail Kategori</label>
+                    <input type="text" class="form-control" id="detail_kategori" name="detail_kategori">
                 </div>
             </div>
             <!-- /.card-body -->

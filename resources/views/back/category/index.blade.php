@@ -34,69 +34,21 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Category</th>
+                        <th>Detail</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.5
-                        </td>
-                        <td>Win 95+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 6
-                        </td>
-                        <td>Win 98+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 7</td>
-                        <td>Win XP SP2+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>AOL browser (AOL desktop)</td>
-                        <td>Win XP</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Other browsers</td>
-                        <td>All others</td>
-                        <td>-</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
+                    @foreach($data as $row)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$row->category_name}}</td>
+                            <td>{{$row->category_detail}}</td>
+                            <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
+                            <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
+                        </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>

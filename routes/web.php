@@ -45,6 +45,7 @@ Route::group(['middleware' => 'is.login', 'prefix' => 'panel', 'as' => 'back.', 
     Route::group(['prefix' => 'category', 'as' => 'category.'],function (){
         Route::get('/', 'categoryController@index')->name('index');
         Route::get('/create', 'categoryController@create')->name('create');
+        Route::post('/create', 'categoryController@store')->name('store');
     });
 
     //product
