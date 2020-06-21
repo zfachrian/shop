@@ -38,23 +38,11 @@ Route::group(['prefix' => 'login', 'namespace' => 'back'], function () {
 });
 
 Route::group(['middleware' => 'is.login', 'prefix' => 'panel', 'as' => 'back.', 'namespace' => 'back'], function () {   
-    //dashboard
     Route::get('/dashboard', 'dashboardController@index')->name('dashboard');
+    
+    Route::resource('category', 'categoryController');
+    Route::resource('product', 'productController');
 
-    //category
-    Route::group(['prefix' => 'category', 'as' => 'category.'],function (){
-        Route::get('/', 'categoryController@index')->name('index');
-        Route::get('/create', 'categoryController@create')->name('create');
-        Route::post('/create', 'categoryController@store')->name('store');
-    });
-
-    //product
-    Route::group(['prefix' => 'product', 'as' => 'product.'],function (){
-        Route::get('/', 'productController@index')->name('index');
-        Route::get('/create', 'productController@create')->name('create');
-    });
-
-    //logout
     Route::get('/logout', 'authController@logout')->name('logout');
 });
 

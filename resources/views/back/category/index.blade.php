@@ -20,6 +20,42 @@
         });
     });
 </script>
+<script>
+$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+});
+$(document).on('click', 'a.jquery-postback', function(e) {
+    e.preventDefault(); // does not go through with the link.
+
+    var $this = $(this);
+
+    // $.post({
+    //     type: $this.data('method'),
+    //     url: $this.attr('href')
+    // }).done(function (data) {
+    //     alert('success');
+    //     console.log(data);
+    // });
+
+    $.ajax({
+        type: "post",
+        url: $this.attr('href'),
+        data: {_method: 'delete'},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (data) {
+            console.log("success yes");
+            location.reload();
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+});
+</script>
 @endsection
 @section('isi')
 <div class="col-12">
@@ -45,8 +81,8 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$row->category_name}}</td>
                             <td>{{$row->category_detail}}</td>
-                            <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                            <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
+                            <td><a href="{{ route('back.category.edit', $row->id) }}" class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
+                            <td><a href="{{ route('back.category.destroy', $row->id) }}"  data-method="delete" class="jquery-postback btn btn-outline-danger btn-sm btn-block font-weight-bold">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>
