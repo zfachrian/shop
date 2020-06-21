@@ -32,14 +32,24 @@ Route::get('/review', 'front\reviewController@index');
 
 
 //login
-Route::get('/login', 'back\authController@index')->name('login');
+Route::group(['prefix' => 'login', 'namespace' => 'back'], function () {
+    Route::get('/', 'authController@index')->name('login');
+    Route::post('/', 'authController@loginAuth')->name('loginAuth');
+});
 
-//dashboard
-Route::get('/dashboard', 'back\dashboardController@index')->name('dashboard');
+Route::group(['middleware' => 'is.login', 'prefix' => 'panel', 'as' => 'back.', 'namespace' => 'back'], function () {   
+    //dashboard
+    Route::get('/dashboard', 'dashboardController@index')->name('dashboard');
 
-//category
-Route::get('/category', 'back\categoryController@index')->name('back-category');
+    //category
+    Route::get('/category', 'categoryController@index')->name('category');
 
-//product
-Route::get('/product', 'back\productController@index')->name('back-product');
-Route::get('/product/create', 'back\productController@create')->name('back-product-create');
+    //product
+    Route::get('/product', 'productController@index')->name('product');
+    Route::get('/product/create', 'productController@create')->name('product-create');
+
+    //logout
+    Route::get('/logout', 'authController@logout')->name('logout');
+});
+
+

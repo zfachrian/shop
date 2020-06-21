@@ -25,7 +25,7 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <a href="{{route('back-product-create')}}" class="btn btn-primary float-right">Tambah</a>
+            <a href="{{route('back.product-create')}}" class="btn btn-primary float-right">Tambah</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">

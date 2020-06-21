@@ -10,18 +10,12 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      @if ($message = Session::get('danger'))
-      <div class="alert alert-danger">
-          {{ $message }}
-      </div>
-      @endif
+      <p class="login-box-msg">Register</p>
 
-      <p class="login-box-msg">Sign in to start your session</p>
-
-      <form action="{{route('loginAuth')}}" method="post">
-        @csrf
+      <form action="{{route('registration')}}" method="post">
+      @csrf
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" name="email" placeholder="Email" value="admin@gmail.com">
+          <input type="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -29,7 +23,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password" name="password" placeholder="Password" value="admin123">
+          <input type="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -44,6 +38,10 @@
           <!-- /.col -->
         </div>
       </form>
+
+      <p class="mb-1">
+        <a href="#">I forgot my password</a>
+      </p>
     </div>
     <!-- /.login-card-body -->
   </div>
