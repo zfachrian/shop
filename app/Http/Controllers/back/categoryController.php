@@ -10,7 +10,12 @@ class categoryController extends Controller
 
     public function index()
     {
-        return view('back.category');
+        return view('back.category.index');
+    }
+
+    public function create()
+    {
+        return view('back.category.create');
     }
 
     

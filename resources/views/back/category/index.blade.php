@@ -1,5 +1,5 @@
 @extends('back.templates.main')
-@section('title') Product @endsection
+@section('title') Category @endsection
 @section('style')
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset('back/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
@@ -25,11 +25,11 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <a href="{{route('back.product-create')}}" class="btn btn-primary float-right">Tambah</a>
+            <a href="{{route('back.category.create')}}" class="btn btn-primary float-right">Tambah</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-        <table id="mainTable" class="table table-bordered table-striped">
+            <table id="mainTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>No</th>

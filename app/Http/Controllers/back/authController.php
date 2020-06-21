@@ -17,7 +17,6 @@ class authController extends Controller
             echo "login";
             return redirect('/panel/dashboard');
         }
-
         return view('back.login');
     }
 
@@ -46,7 +45,4 @@ class authController extends Controller
         Session::flush();
         return redirect()->to('login');
     }
-
-
-    
 }

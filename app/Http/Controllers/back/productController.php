@@ -10,17 +10,12 @@ class productController extends Controller
 
     public function index()
     {
-        return view('back.product');
+        return view('back.product.index');
     }
 
     public function create()
     {
-        return view('back.productCreate');
-    }
-
-    public function edit()
-    {
-        return view('back.productEdit');
+        return view('back.product.create');
     }
 
 }

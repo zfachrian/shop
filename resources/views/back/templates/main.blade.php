@@ -77,13 +77,13 @@
             </a>
             <ul class="nav nav-treeview ml-5">
               <li class="nav-item">
-                <a href="{{route('back.product')}}" class="nav-link">
+                <a href="{{route('back.product.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('back.category')}}" class="nav-link">
+                <a href="{{route('back.category.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
                 </a>
