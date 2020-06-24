@@ -25,14 +25,20 @@ class productController extends Controller
 
     public function store(Request $request)
     {
+        if($request->hasFile('gambar')){
+            $gambar = $request->file('gambar')->store('gambar', 'public');
+        } else {
+            $gambar = null;
+        }
         // dd($request);
         // Form Validate
         $request->validate([
-            'kategori' => 'bail|required',
-            'kode' => 'bail|required',
-            'kode_produk' => 'bail|required',
-            'nama_produk' => 'bail|required',
-            'harga' => 'bail|required',
+            'kategori' => ['bail|required'],
+            'kode' => ['bail|required'],
+            'kode_produk' => ['bail|required'],
+            'nama_produk' => ['bail|required'],
+            'harga' => ['bail|required'],
+            'gambar' => ['mimes:jpg,png,jpeg,JPG,PNG,JPEG'],
         ]);
 
         // Eloquent ORM

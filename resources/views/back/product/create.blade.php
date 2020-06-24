@@ -26,7 +26,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" method="post" action="{{route('back.product.store')}}">
+        <form role="form" method="post" action="{{route('back.product.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -75,6 +75,11 @@
                     @error('deskripsi')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="gambar">Example file input</label>
+                    <input type="file" class="form-control-file" id="gambar" name="gambar">
                 </div>
             </div>
             <!-- /.card-body -->
