@@ -26,7 +26,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" method="post" action="{{route('back.product.update',[$product->id])}}">
+        <form role="form" method="post" action="{{route('back.product.update',[$product->id])}}" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="card-body">
@@ -77,6 +77,14 @@
                     <label for="deskripsi">Deskripsi</label>
                     <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3">{{$product->product_description}}</textarea>
                     @error('deskripsi')
+                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+                <img src="{{ asset('storage/'.$product->product_img) }}" class="img-thumbnail" style="max-width:200px;">
+                <div class="form-group">
+                    <label for="gambar">Example file input</label>
+                    <input type="file" class="form-control-file @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
+                    @error('gambar')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
                 </div>

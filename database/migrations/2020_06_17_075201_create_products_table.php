@@ -17,9 +17,9 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('product_code');
             $table->string('product_name');
-            $table->string('product_img');
+            $table->string('product_img')->nullable();
             $table->bigInteger('product_price');
-            $table->text('product_description');
+            $table->text('product_description')->nullable();
             $table->date('product_store')->nullable(); //produk masuk
             $table->date('product_exp')->nullable(); //kadaluarsa
             $table->unsignedBigInteger('categories_id');

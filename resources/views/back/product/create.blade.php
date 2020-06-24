@@ -76,10 +76,12 @@
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
                 </div>
-
                 <div class="form-group">
                     <label for="gambar">Example file input</label>
-                    <input type="file" class="form-control-file" id="gambar" name="gambar">
+                    <input type="file" class="form-control-file @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
+                    @error('gambar')
+                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <!-- /.card-body -->

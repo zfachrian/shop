@@ -69,6 +69,7 @@ $(document).on('click', 'a.jquery-postback', function(e) {
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Gambar</th>
                         <th>Nama Kategori</th>
                         <th>Kode</th>
                         <th>Nama</th>
@@ -80,11 +81,24 @@ $(document).on('click', 'a.jquery-postback', function(e) {
                 <tbody>
                     @foreach($data as $item)
                     <tr>
-                        <th>{{$loop->iteration}}</th>
-                        <th>{{$item->category==null ? "Tidak Ditemukan" : $item->category->category_name}}</th>
-                        <th>{{$item->product_code}}</th>
-                        <th>{{$item->product_name}}</th>
-                        <th>{{formatMoney($item->product_price, "Rp. ")}}</th>
+                        <td>{{$loop->iteration}}</td>
+                        <td>
+                            @if($item->product_img)
+                            <img src="{{ asset('storage/'.$item->product_img) }}" class="img-thumbnail" style="max-width:200px;">
+                            @else
+                            gambar kosong
+                            @endif
+                        </td>
+                        <td>
+                            @if($item->category)
+                            {{$item->category->category_name}}
+                            @else
+                            Belum ada
+                            @endif
+                        </td>
+                        <td>{{$item->product_code}}</td>
+                        <td>{{$item->product_name}}</td>
+                        <td>{{formatMoney($item->product_price, "Rp. ")}}</td>
                         <td><a href="{{ route('back.product.edit', $item->id) }}" class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
                         <td><a href="{{ route('back.product.destroy', $item->id) }}"  data-method="delete" class="jquery-postback btn btn-outline-danger btn-sm btn-block font-weight-bold">Delete</a></td>
                     </tr>
@@ -93,6 +107,7 @@ $(document).on('click', 'a.jquery-postback', function(e) {
                 <tfoot>
                     <tr>
                         <th>No</th>
+                        <th>Gambar</th>
                         <th>Nama Kategori</th>
                         <th>Kode</th>
                         <th>Nama</th>

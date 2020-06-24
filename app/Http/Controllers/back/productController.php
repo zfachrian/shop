@@ -4,6 +4,7 @@ namespace App\Http\Controllers\back;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Models\Product;
 use App\Http\Models\Category;
 
@@ -25,25 +26,27 @@ class productController extends Controller
 
     public function store(Request $request)
     {
-        if($request->hasFile('gambar')){
-            $gambar = $request->file('gambar')->store('gambar', 'public');
-        } else {
-            $gambar = null;
-        }
         // dd($request);
         // Form Validate
         $request->validate([
-            'kategori' => ['bail|required'],
-            'kode' => ['bail|required'],
-            'kode_produk' => ['bail|required'],
-            'nama_produk' => ['bail|required'],
-            'harga' => ['bail|required'],
-            'gambar' => ['mimes:jpg,png,jpeg,JPG,PNG,JPEG'],
+            'kategori' => 'required',
+            'kode' => 'required',
+            'kode_produk' => 'required',
+            'nama_produk' => 'required',
+            'harga' => 'required',
+            'gambar' => 'mimes:jpg,png,jpeg,JPG,PNG,JPEG',
         ]);
+
+        if($request->file('gambar')){
+            $gambar = $request->file('gambar')->store('product', 'public');
+        } else {
+            $gambar = null;
+        }
 
         // Eloquent ORM
         $Product = new Product;
-        $Product->product_code = $request->kode.$request->kode_produk;
+        $Product->product_img = $gambar;
+        $Product->product_code = $request->kode_produk;
         $Product->product_name = $request->nama_produk;
         $Product->product_price = $request->harga;
         $Product->product_description = $request->deskripsi;
@@ -63,14 +66,24 @@ class productController extends Controller
         
         // Form Validate
         $request->validate([
-            'kategori' => 'bail|required',
-            'kode_produk' => 'bail|required',
-            'nama_produk' => 'bail|required',
-            'harga' => 'bail|required',
+            'kategori' => 'required',
+            'kode_produk' => 'required',
+            'nama_produk' => 'required',
+            'harga' => 'required',
+            'gambar' => 'mimes:jpg,png,jpeg,JPG,PNG,JPEG',
         ]);
         
         // Eloquent ORM
-        $Product = Product::find($product->id);
+        $Product = Product::findOrFail($product->id);
+            if($request->file('gambar')){
+                $gambar = $request->file('gambar')->store('product', 'public');
+                if($Product->product_img){
+                    Storage::delete('public/'.$Product->product_img);
+                    $Product->product_img = $gambar;
+                }else{
+                    $Product->product_img = $gambar;
+                }
+            }
         $Product->product_code = $request->kode_produk;
         $Product->product_name = $request->nama_produk;
         $Product->product_price = $request->harga;
@@ -83,6 +96,9 @@ class productController extends Controller
 
     public function destroy(Product $product)
     {
+        if($product->product_img){
+            Storage::delete('public/'.$product->product_img);
+        }
         Product::destroy($product->id);
         return redirect()->route('back.product.index')->with('success', 'product was delete!');
     }

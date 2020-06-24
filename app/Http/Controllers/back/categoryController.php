@@ -24,7 +24,7 @@ class categoryController extends Controller
     {
         // Form Validate
         $request->validate([
-            'nama_kategori' => 'bail|required'
+            'nama_kategori' => 'required'
         ]);
 
         // Eloquent ORM
@@ -45,11 +45,11 @@ class categoryController extends Controller
     {
         // Form Validate
         $request->validate([
-            'nama_kategori' => 'bail|required',
+            'nama_kategori' => 'required',
         ]);
 
         // Eloquent ORM
-        $category = Category::find($category->id);
+        $category = Category::findOrFail($category->id);
         $category->category_name = $request->nama_kategori;
         $category->category_detail = $request->detail_kategori;
         $category->save();
