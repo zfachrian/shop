@@ -1,5 +1,5 @@
 @extends('back.templates.main')
-@section('title') Tambah Product @endsection
+@section('title') Edit Product @endsection
 @section('style')
 <!-- Select2 -->
 <link rel="stylesheet" href="{{asset('back/plugins/select2/css/select2.min.css')}}">
@@ -22,20 +22,24 @@
     <!-- general form elements -->
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Data Product</h3>
+            <h3 class="card-title">Edit Data Product</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" method="post" action="{{route('back.product.store')}}">
+        <form role="form" method="post" action="{{route('back.product.update',[$product->id])}}">
+            @method('put')
             @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label for="kategori">Kategori</label>
+                    <label for="kategori">Kategori {{$product->categories_id}}</label>
                     <select class="form-control @error('kategori') is-invalid @enderror" id="kategori" name="kategori">
                     @foreach($category as $item)
-                    <option value="{{$item->id}}">{{$item->category_name}}</option>
+                        <option value="{{$item->id}}" 
+                            {{ $item->id == $product->categories_id ? "selected" : null}}
+                        >{{$item->category_name}}</option>
                     @endforeach
                     </select>
+
                     @error('kategori')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
@@ -47,16 +51,16 @@
                         <input type="text" class="form-control" id="kode" name="kode" readonly value="SOS">
                         </div>
                         <div class="col">
-                        <input type="number" name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
+                        <input type="text" name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror" value="{{$product->product_code}}">
                         @error('kode_produk')
-                        <div class="alert alert-danger mt-1">{{ $message }}</div>
-                    @enderror
+                            <div class="alert alert-danger mt-1">{{ $message }}</div>
+                        @enderror
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="nama_produk">Nama Produk</label>
-                    <input type="text" class="form-control @error('nama_produk') is-invalid @enderror" id="nama_produk" name="nama_produk">
+                    <input type="text" class="form-control @error('nama_produk') is-invalid @enderror" id="nama_produk" name="nama_produk" value="{{$product->product_name}}">
                     @error('nama_produk')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
@@ -64,14 +68,14 @@
 
                 <div class="form-group">
                     <label for="harga">Harga</label>
-                    <input type="text" class="form-control @error('harga') is-invalid @enderror" id="Harga" name="harga">
+                    <input type="text" class="form-control @error('harga') is-invalid @enderror" id="Harga" name="harga" value="{{$product->product_price}}">
                     @error('harga')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3">{{$product->product_description}}</textarea>
                     @error('deskripsi')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror

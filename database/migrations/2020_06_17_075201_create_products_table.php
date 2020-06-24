@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->bigInteger('product_price');
             $table->text('product_description');
-            $table->date('product_store'); //produk masuk
-            $table->date('product_exp'); //kadaluarsa
+            $table->date('product_store')->nullable(); //produk masuk
+            $table->date('product_exp')->nullable(); //kadaluarsa
             $table->unsignedBigInteger('categories_id');
             $table->timestamps();
         });

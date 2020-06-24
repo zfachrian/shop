@@ -20,6 +20,42 @@
         });
     });
 </script>
+<script>
+$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+});
+$(document).on('click', 'a.jquery-postback', function(e) {
+    e.preventDefault(); // does not go through with the link.
+
+    var $this = $(this);
+
+    // $.post({
+    //     type: $this.data('method'),
+    //     url: $this.attr('href')
+    // }).done(function (data) {
+    //     alert('success');
+    //     console.log(data);
+    // });
+
+    $.ajax({
+        type: "post",
+        url: $this.attr('href'),
+        data: {_method: 'delete'},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (data) {
+            console.log("success yes");
+            location.reload();
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+});
+</script>
 @endsection
 @section('isi')
 <div class="col-12">
@@ -37,16 +73,20 @@
                         <th>Kode</th>
                         <th>Nama</th>
                         <th>Harga</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($data as $item)
                     <tr>
                         <th>{{$loop->iteration}}</th>
-                        <th>{{$item->category->category_name}}</th>
+                        <th>{{$item->category==null ? "Tidak Ditemukan" : $item->category->category_name}}</th>
                         <th>{{$item->product_code}}</th>
                         <th>{{$item->product_name}}</th>
-                        <th>{{$item->product_price}}</th>
+                        <th>{{formatMoney($item->product_price, "Rp. ")}}</th>
+                        <td><a href="{{ route('back.product.edit', $item->id) }}" class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
+                        <td><a href="{{ route('back.product.destroy', $item->id) }}"  data-method="delete" class="jquery-postback btn btn-outline-danger btn-sm btn-block font-weight-bold">Delete</a></td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -57,6 +97,8 @@
                         <th>Kode</th>
                         <th>Nama</th>
                         <th>Harga</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </tfoot>
             </table>
