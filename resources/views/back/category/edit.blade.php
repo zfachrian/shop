@@ -26,7 +26,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" method="post" action="{{route('back.category.update',[$category->id])}}">
+        <form role="form" method="post" action="{{route('back.category.update',[$category->id])}}" enctype="multipart/form-data">
         @method('put')
         @csrf
             <div class="card-body">
@@ -40,6 +40,14 @@
                 <div class="form-group">
                     <label for="detail_kategori">Detail Kategori</label>
                     <input type="text" class="form-control" id="detail_kategori" name="detail_kategori" value="{{$category->category_detail}}">
+                </div>
+                <img src="{{ asset('storage/'.$category->category_img) }}" class="img-thumbnail" style="max-width:200px;">
+                <div class="form-group">
+                    <label for="gambar">Example file input</label>
+                    <input type="file" class="form-control-file @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
+                    @error('gambar')
+                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <!-- /.card-body -->

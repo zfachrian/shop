@@ -69,6 +69,7 @@ $(document).on('click', 'a.jquery-postback', function(e) {
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Gambar</th>
                         <th>Nama</th>
                         <th>Detail</th>
                         <th></th>
@@ -79,6 +80,13 @@ $(document).on('click', 'a.jquery-postback', function(e) {
                     @foreach($data as $row)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                            <th>
+                                @if($row->category_img)
+                                    <img src="{{ asset('storage/'.$row->category_img) }}" class="img-thumbnail" style="max-width:200px;">
+                                @else
+                                    gambar kosong
+                                @endif
+                            </th>
                             <td>{{$row->category_name}}</td>
                             <td>{{$row->category_detail}}</td>
                             <td><a href="{{ route('back.category.edit', $row->id) }}" class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
@@ -89,6 +97,7 @@ $(document).on('click', 'a.jquery-postback', function(e) {
                 <tfoot>
                     <tr>
                         <th>No</th>
+                        <th>Gambar</th>
                         <th>Nama</th>
                         <th>Category</th>
                         <th></th>
