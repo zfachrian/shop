@@ -33,78 +33,30 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Nama Kategori</th>
+                        <th>Kode</th>
                         <th>Nama</th>
-                        <th>Category</th>
-                        <th></th>
-                        <th></th>
+                        <th>Harga</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($data as $item)
                     <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
+                        <th>{{$loop->iteration}}</th>
+                        <th>{{$item->category->category_name}}</th>
+                        <th>{{$item->product_code}}</th>
+                        <th>{{$item->product_name}}</th>
+                        <th>{{$item->product_price}}</th>
                     </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.5
-                        </td>
-                        <td>Win 95+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 6
-                        </td>
-                        <td>Win 98+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 7</td>
-                        <td>Win XP SP2+</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>AOL browser (AOL desktop)</td>
-                        <td>Win XP</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
-                    <tr>
-                        <td>Other browsers</td>
-                        <td>All others</td>
-                        <td>-</td>
-                        <td><a class="btn btn-outline-warning btn-sm btn-block font-weight-bold">Edit</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm btn-block font-weight-bold">Hapus</a></td>
-                    </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>No</th>
+                        <th>Nama Kategori</th>
+                        <th>Kode</th>
                         <th>Nama</th>
-                        <th>Category</th>
-                        <th></th>
-                        <th></th>
+                        <th>Harga</th>
                     </tr>
                 </tfoot>
             </table>
