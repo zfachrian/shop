@@ -67,6 +67,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('back.banner.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Banner
+              </p>
+            </a>
+          </li>
 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
@@ -79,13 +87,11 @@
             <ul class="nav nav-treeview ml-5">
               <li class="nav-item">
                 <a href="{{route('back.product.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Product</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('back.category.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
                 </a>
               </li>

@@ -77,7 +77,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="gambar">Example file input</label>
+                    <label for="gambar">Gambar</label>
                     <input type="file" class="form-control-file @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
                     @error('gambar')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>

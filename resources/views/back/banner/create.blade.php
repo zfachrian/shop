@@ -1,5 +1,5 @@
 @extends('back.templates.main')
-@section('title') Tambah Kategori @endsection
+@section('title') Tambah Banner @endsection
 @section('style')
 <!-- Select2 -->
 <link rel="stylesheet" href="{{asset('back/plugins/select2/css/select2.min.css')}}">
@@ -22,23 +22,23 @@
     <!-- general form elements -->
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Tambah Kategori</h3>
+            <h3 class="card-title">Tambah Banner</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" method="post" action="{{route('back.category.store')}}" enctype="multipart/form-data">
+        <form role="form" method="post" action="{{route('back.banner.store')}}" enctype="multipart/form-data">
         @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label for="nama_kategori">Nama Kategori</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="nama_kategori" name="nama_kategori">
-                    @error('nama_kategori')
+                    <label for="nama_banner">Nama Banner</label>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="nama_banner" name="nama_banner">
+                    @error('nama_banner')
                         <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="detail_kategori">Detail Kategori</label>
-                    <input type="text" class="form-control" id="detail_kategori" name="detail_kategori">
+                    <label for="link_banner">Link Banner</label>
+                    <input type="text" class="form-control" id="link_banner" name="link_banner">
                 </div>
                 <div class="form-group">
                     <label for="gambar">Gambar</label>

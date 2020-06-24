@@ -40,6 +40,7 @@ Route::group(['prefix' => 'login', 'namespace' => 'back'], function () {
 Route::group(['middleware' => 'is.login', 'prefix' => 'panel', 'as' => 'back.', 'namespace' => 'back'], function () {   
     Route::get('/dashboard', 'dashboardController@index')->name('dashboard');
     
+    Route::resource('banner', 'bannerController');
     Route::resource('category', 'categoryController');
     Route::resource('product', 'productController');
 

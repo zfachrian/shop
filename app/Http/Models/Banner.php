@@ -4,12 +4,12 @@ namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Banner extends Model
 {
     protected $fillable = [
-        'category_name', 
-        'category_img', 
-        'category_detail',
+        'banner_title', 
+        'banner_image',
+        'banner_link'
     ];
 
 }
