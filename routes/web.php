@@ -43,6 +43,7 @@ Route::group(['middleware' => 'is.login', 'prefix' => 'panel', 'as' => 'back.', 
     Route::resource('banner', 'bannerController');
     Route::resource('category', 'categoryController');
     Route::resource('product', 'productController');
+    Route::resource('news', 'newsController');
 
     Route::get('/logout', 'authController@logout')->name('logout');
 });

@@ -69,13 +69,20 @@
           </li>
           <li class="nav-item">
             <a href="{{route('back.banner.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-images"></i>
               <p>
                 Banner
               </p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="{{route('back.news.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                Berita
+              </p>
+            </a>
+          </li>
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
