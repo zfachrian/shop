@@ -15,6 +15,7 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+            $table->foreign('news_categories_id')->references('id')->on('news_categories');
             $table->string('slug');
             $table->string('news_title');
             $table->longText('news_content');
