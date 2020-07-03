@@ -21,7 +21,7 @@ class homeController extends Controller
         $banner = Banner::get();
         $product = product::get();
         $kategori = category::get();
-        // dd($kategori);
+        // dd($banner);
 
         return view('front.index', compact('title','banner', 'product', 'kategori'));
     }
