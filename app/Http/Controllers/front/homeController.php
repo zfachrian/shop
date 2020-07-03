@@ -4,6 +4,9 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Models\Banner;
+use App\Http\Models\Product;
+use App\Http\Models\Category;
 
 class homeController extends Controller
 {
@@ -14,7 +17,13 @@ class homeController extends Controller
      */
     public function index()
     {
-        return view('front.index');
+        $title = "Selamat Datang";
+        $banner = Banner::get();
+        $product = product::get();
+        $kategori = category::get();
+        // dd($kategori);
+
+        return view('front.index', compact('title','banner', 'product', 'kategori'));
     }
 
     /**
