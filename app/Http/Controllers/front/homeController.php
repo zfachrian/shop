@@ -19,43 +19,14 @@ class homeController extends Controller
     {
         $title = "Selamat Datang";
         $banner = Banner::get();
-        $product = product::get();
         $kategori = category::get();
-        // dd($banner);
+        $product = product::get();
+        $productKat1 = product::where('categories_id', 1)->get();
+        $productKat2 = product::where('categories_id', 2)->get();
+        $productKat3 = product::where('categories_id', 3)->get();
+        // dd($product);
 
-        return view('front.index', compact('title','banner', 'product', 'kategori'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return view('front.index', compact('title','banner', 'product', 'productKat1', 'productKat2', 'productKat3', 'kategori'));
     }
 
     /**

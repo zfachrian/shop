@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> Digigi | @yield('title') </title>
+    <title> Shop | @yield('title') </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -51,11 +51,7 @@
                         <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
                             <div class="logo">
                                 <a href="/">
-                                    <img src="{{asset('front/images/logo/digigi.jpg')}}" style="
-                                    vertical-align: middle;
-                                    width: 120px;
-                                    height: 120px;
-                                    border-radius: 10%;" alt="logo">
+                                    <img src="{{asset('front/images/logo/logo.png')}}" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -194,7 +190,7 @@
                     <div class="ft__widget">
                         <div class="ft__logo">
                             <a href="/">
-                                <img src="{{asset('front/images/logo/digigi.jpg')}}" style="
+                                <img src="{{asset('front/images/logo/logo.png')}}" style="
                                     vertical-align: middle;
                                     width: 200px;
                                     height: 200px;

@@ -22,6 +22,8 @@ Route::get('/', 'front\homeController@index');
 
 //shop
 Route::get('/shop', 'front\shopController@index');
+Route::get('/detailProduct/{id}', 'front\shopController@detailProduct');
+Route::post('/buy/{id}', 'front\shopController@buy');
 
 //contact
 Route::get('/contact', 'front\contactController@index');
